@@ -11,7 +11,10 @@
 angular
   .module('bookBrowserApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ngSanitize',
+    'ui.bootstrap',
+    'ui.select'
   ])
   .config(function ($routeProvider) {
     $routeProvider

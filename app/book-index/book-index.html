@@ -1,3 +1,35 @@
 <div>
-    <div>Book INDEX view.</div>
+    <div class="header-controls form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-8">
+                <span>Find me the best</span>
+                <div class="btn-group">
+                  <ui-select 
+                    ng-model="userSelection.genre">
+                    <ui-select-match placeholder="[any genre]">{{$select.selected}}</ui-select-match>
+                    <ui-select-choices repeat="genre in genres | filter: $select.search">
+                      <span ng-bind-html="genre | highlight: $select.search"></span>
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+                
+                <span>books about</span>
+                <div class="btn-group">
+                  <ui-select 
+                    ng-model="userSelection.topic">
+                    <ui-select-match placeholder="[any topic]">{{$select.selected}}</ui-select-match>
+                    <ui-select-choices repeat="genre in genres | filter: $select.search">
+                      <span ng-bind-html="genre | highlight: $select.search"></span>
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <input type="search" ng-model="userSelection.search" class="form-control" placeholder="Search books">
+            </div>
+        </div>
+    </div>
+    <div class="book-list-area">
+        <book-display filters="userSelection"></book-display>
+    </div>
 </div>
