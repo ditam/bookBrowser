@@ -1,4 +1,41 @@
 
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
 .header-controls span.ui-select-toggle {
     padding-right: 2em;
+}
+
+#book-display-container {
+    .book{
+        border: 1px solid gray;
+        padding: 1em;
+        margin: 1em 0;
+        border-radius: 10px;
+        overflow: hidden;
+        
+        img {
+            width: 100%;
+        }
+        
+        .title{
+            font-weight: 600;
+            padding-top: 1em;
+        }
+        
+        .title, .author{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;            
+        }
+        
+        .book-footer{
+            padding-top: 1em;
+        }
+        
+        .glyphicon{
+            margin-right: 0.2em;
+        }
+    }    
 }
