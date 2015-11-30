@@ -21,7 +21,7 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
             throw {
                 msg: 'Error while fetching books!',
                 data: error
-            }
+            };
         }
     );
     
