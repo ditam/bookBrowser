@@ -7,10 +7,12 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
     * An async interface is provided with an artificial delay as an API stub,
     * making the future transition to a real API easier.
     **/
-    var ASYNC_DELAY = 25; //ms  
+    var ASYNC_DELAY = 15; //ms  
     var books = [];
     
-    $http.get('resources/books.json').then(
+    /* Promise is saved to delay get() if necessary */
+    var booksPromise = $http.get('resources/books.json');
+    booksPromise.then(
         function(response){
             books = response.data;
             console.log('book cache populated.');
@@ -21,7 +23,7 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
                 data: error
             }
         }
-    );    
+    );
     
     //returns true if a contains b as a substring (case-insensitive)
     function containsString(a,b){
@@ -34,32 +36,34 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
         var deferred = $q.defer();
         var filteredBooks;
         $timeout(function(){
-            filteredBooks = books;
-            if(filters.id != null){
-                filteredBooks = filteredBooks.filter(function(book){
-                    return book.id === filters.id;
-                });
-            }
-            if(filters.category != null){
-                filteredBooks = filteredBooks.filter(function(book){
-                    return book.genre.category === filters.category;
-                });
-            }
-            if(filters.genre != null){
-                filteredBooks = filteredBooks.filter(function(book){
-                    return book.genre.name === filters.genre;
-                });
-            }            
-            if(filters.search != null){
-                filteredBooks = filteredBooks.filter(function(book){
-                    return ( 
-                        containsString(book.name, filters.search) ||
-                        containsString(book.author.name, filters.search) ||
-                        containsString(book.description, filters.search)
-                    );
-                });
-            }
-            deferred.resolve(filteredBooks);
+            booksPromise.then(function(){
+                filteredBooks = books;
+                if(filters.id != null){
+                    filteredBooks = filteredBooks.filter(function(book){
+                        return book.id === filters.id;
+                    });
+                }
+                if(filters.category != null){
+                    filteredBooks = filteredBooks.filter(function(book){
+                        return book.genre.category === filters.category;
+                    });
+                }
+                if(filters.genre != null){
+                    filteredBooks = filteredBooks.filter(function(book){
+                        return book.genre.name === filters.genre;
+                    });
+                }            
+                if(filters.search != null){
+                    filteredBooks = filteredBooks.filter(function(book){
+                        return ( 
+                            containsString(book.name, filters.search) ||
+                            containsString(book.author.name, filters.search) ||
+                            containsString(book.description, filters.search)
+                        );
+                    });
+                }
+                deferred.resolve(filteredBooks);
+            });
         }, ASYNC_DELAY);
         return deferred.promise;
     }

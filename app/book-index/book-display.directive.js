@@ -14,7 +14,6 @@ angular.module('bookBrowserApp').directive('bookDisplay', function(books){
         };
         
         function updateResults(){
-            console.log('filtering:',$scope.filters);
             var filters = {};
             if($scope.filters){
                 filters.id = $scope.filters.id;
@@ -27,7 +26,6 @@ angular.module('bookBrowserApp').directive('bookDisplay', function(books){
                 }
             }
             books.get(filters).then(function(data){
-                console.log('data arrived,',data.length);
                 $scope.results.books = data;
             });
         }
