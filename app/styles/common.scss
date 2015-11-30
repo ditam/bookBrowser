@@ -8,6 +8,12 @@ body{
 }
 
 #book-display-container {
+    a{
+        color: #333;
+        &:hover{
+            text-decoration: none;
+        }
+    }
     .book{
         border: 1px solid gray;
         padding: 1em;
@@ -36,6 +42,10 @@ body{
         
         .glyphicon{
             margin-right: 0.2em;
+        }
+        
+        &:hover{
+            background: #f0f0f0;
         }
     }    
 }
