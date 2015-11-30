@@ -1,6 +1,6 @@
 <div class="row" id="book-display-container">
     <div ng-if="results.books.length === 0">
-        <div class="message">No books found. Try widening your search!</div>
+        <div class="error-message">No books found. Try widening your search!</div>
     </div>
     <div ng-repeat="book in results.books | limitTo: limit" class="col-sm-4">
         <a href="#/details/{{book.id}}" title="See the details of this book!">
