@@ -1,5 +1,16 @@
-<div>
-<ul>
-    <li ng-repeat="book in results.books | limitTo: 6">Title: {{book.name}}</li>
-</ul>
+<div class="row" id="book-display-container">
+    <div ng-if="results.books.length === 0">
+        <div class="message">No books found. Try widening your search!</div>
+    </div>
+    <div ng-repeat="book in results.books | limitTo: 6" class="col-sm-4">
+        <div class="book">
+            <img ng-src="{{book.cover}}">
+            <div class="title">{{book.name}}</div>
+            <div class="author">By {{book.author.name}}</div>
+            <div class="book-footer">
+                <span><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>{{book.likes}}</span>
+                <span class="pull-right">{{humanizeDate(book.published)}}</span>
+            </div>
+        </div>
+    </div>
 </div>

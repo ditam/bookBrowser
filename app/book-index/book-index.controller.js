@@ -43,8 +43,6 @@ angular.module('bookBrowserApp')
                 return {name: genre, searchValue: genre};
             });
             $scope.genres.unshift({name: '[any genre]'});
-            
-            console.log('extracted genres:',$scope.categories,$scope.genres);
         });
     }
     

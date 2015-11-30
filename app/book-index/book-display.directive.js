@@ -25,13 +25,16 @@ angular.module('bookBrowserApp').directive('bookDisplay', function(books){
                 filters.genre = $scope.filters.genre.searchValue;
             }
             books.get(filters).then(function(data){
-                console.log('data arrived,',data.length);
+                console.log('data arrived,',data.length,data);
                 $scope.results.books = data;
             });
         }
         
         updateResults();
         
+        $scope.humanizeDate = function(dateString){
+            return moment(dateString).fromNow();
+        };
         
         $scope.$watch('filters', function(){
             updateResults();
