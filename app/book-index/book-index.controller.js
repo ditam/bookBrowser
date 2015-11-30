@@ -8,7 +8,7 @@
  * Controller of the bookBrowserApp
  */
 angular.module('bookBrowserApp')
-  .controller('BookIndexCtrl', function ($scope, books) {
+  .controller('BookIndexCtrl', function ($scope, books, $routeParams) {
     $scope.userSelection = {};
     
     //collections of selectable categories and genres. 
@@ -17,6 +17,15 @@ angular.module('bookBrowserApp')
     //both are extended with an 'any' type selection with no searchValue
     $scope.categories = [];
     $scope.genres = [];
+    
+    ['category','genre'].forEach(function(param){
+        if($routeParams[param]){
+            $scope.userSelection[param] = {
+                name: $routeParams[param],
+                searchValue: $routeParams[param]
+            };
+        }
+    });
     
     function fetchCategoriesAsync(){
         var categories = [];

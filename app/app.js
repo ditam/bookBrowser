@@ -18,7 +18,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/:category?:genre?', {
         templateUrl: 'book-index/book-index.html',
         controller: 'BookIndexCtrl'
       })

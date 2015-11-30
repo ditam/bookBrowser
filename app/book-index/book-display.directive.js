@@ -27,7 +27,7 @@ angular.module('bookBrowserApp').directive('bookDisplay', function(books){
                 }
             }
             books.get(filters).then(function(data){
-                console.log('data arrived,',data.length,data);
+                console.log('data arrived,',data.length);
                 $scope.results.books = data;
             });
         }

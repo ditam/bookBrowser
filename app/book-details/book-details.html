@@ -5,7 +5,7 @@
         <div class="book-description">{{book.description}}</div>
         
         <h2>Categories:</h2>
-        <div>{{book.genre.category}}, {{book.genre.name}}</div>
+        <div><a href="#/?category={{book.genre.category}}">{{book.genre.category}}</a>, <a href="#/?genre={{book.genre.name}}">{{book.genre.name}}</a></div>
     </div>
     
     <div class="book-body">
