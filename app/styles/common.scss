@@ -45,7 +45,62 @@ body{
         }
         
         &:hover{
-            background: #f0f0f0;
+            background: #e0e5f0;
         }
     }    
+}
+
+#book-details-container{
+    
+    h1{
+        font-size: 24px;
+        font-weight: 600;
+    }
+    .book-author{
+        font-size: 18px;
+    }
+    h2{
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .centered{
+        text-align: center;
+    }
+    
+    .book-header, .recommendations{
+        padding: 1em;
+    }
+    .book-body{
+        padding: 1em;
+        background-color: #f6f6f6;
+        
+        .introduction::first-line{
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        p{
+            padding: 0.5em 0;
+        }
+        
+        hr{
+            border-top: 1px solid #333;
+            margin-left: 35%;
+            margin-right: 35%;
+        }
+        
+        img.avatar{
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        
+        .signature{
+            text-align: center;
+            font-size: 18px;
+            padding-top: 0.5em;
+            padding-bottom: 1.5em;
+        }
+    }
+    
 }

@@ -2,7 +2,8 @@
     <div ng-if="results.books.length === 0">
         <div class="message">No books found. Try widening your search!</div>
     </div>
-    <div ng-repeat="book in results.books | limitTo: 6" class="col-sm-4">
+    <div ng-repeat="book in results.books | limitTo: limit" class="col-sm-4">
+        <a href="#/details/{{book.id}}" title="See the details of this book!">
         <div class="book">
             <img ng-src="{{book.cover}}">
             <div class="title">{{book.name}}</div>
@@ -12,5 +13,6 @@
                 <span class="pull-right">{{humanizeDate(book.published)}}</span>
             </div>
         </div>
+        </a>
     </div>
 </div>

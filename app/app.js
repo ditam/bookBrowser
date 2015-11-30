@@ -22,7 +22,7 @@ angular
         templateUrl: 'book-index/book-index.html',
         controller: 'BookIndexCtrl'
       })
-      .when('/details', {
+      .when('/details/:bookId?', {
         templateUrl: 'book-details/book-details.html',
         controller: 'BookDetailsCtrl'
       })

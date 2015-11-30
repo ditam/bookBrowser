@@ -7,7 +7,7 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
     * An async interface is provided with an artificial delay as an API stub,
     * making the future transition to a real API easier.
     **/
-    var ASYNC_DELAY = 1000; //ms  
+    var ASYNC_DELAY = 25; //ms  
     var books = [];
     
     $http.get('resources/books.json').then(
@@ -31,6 +31,7 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
     //a filter object is optional
     function get(_filters){
         var filters = _filters || {};
+        console.log('getting with filters:',filters);
         var deferred = $q.defer();
         var filteredBooks;
         $timeout(function(){
