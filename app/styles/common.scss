@@ -3,8 +3,13 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-.header-controls span.ui-select-toggle {
-    padding-right: 2em;
+.header-controls{ 
+    span.ui-select-toggle {
+        padding-right: 2em;
+    }
+    div.ui-select-container {
+        max-width: 9em;
+    }
 }
 
 #book-display-container {
