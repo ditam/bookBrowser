@@ -8,8 +8,8 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
     * making the future transition to a real API easier.
     **/
     var ASYNC_DELAY = 1000; //ms  
-    var books;
-
+    var books = [];
+    
     $http.get('resources/books.json').then(
         function(response){
             books = response.data;
@@ -21,7 +21,7 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
                 data: error
             }
         }
-    );
+    );    
     
     //returns true if a contains b as a substring (case-insensitive)
     function containsString(a,b){
@@ -40,14 +40,14 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
                     return book.id === filters.id;
                 });
             }
-            if(filters.genre != null){
+            if(filters.category != null){
                 filteredBooks = filteredBooks.filter(function(book){
-                    return book.genre.category === filters.genre;
+                    return book.genre.category === filters.category;
                 });
             }
-            if(filters.topic != null){
+            if(filters.genre != null){
                 filteredBooks = filteredBooks.filter(function(book){
-                    return book.genre.category.name === filters.genre;
+                    return book.genre.name === filters.genre;
                 });
             }            
             if(filters.search != null){
@@ -65,7 +65,7 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
     }
 
     return {
-        get: get
+        get: get,
         //other methods are not supported
     };
     

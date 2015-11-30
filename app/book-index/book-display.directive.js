@@ -8,15 +8,23 @@ angular.module('bookBrowserApp').directive('bookDisplay', function(books){
         filters: '='
     },
     link: function($scope) {
-        console.log('display directive link,', books);
-        
         $scope.results = {
             books: []
         };
         
         function updateResults(){
-            console.log('update started');
-            books.get($scope.filters).then(function(data){
+            console.log('filtering:',$scope.filters);
+            var filters = {
+                id: $scope.filters.id,
+                search: $scope.filters.search
+            };
+            if($scope.filters.category){
+                filters.category = $scope.filters.category.searchValue;
+            }
+            if($scope.filters.genre){
+                filters.genre = $scope.filters.genre.searchValue;
+            }
+            books.get(filters).then(function(data){
                 console.log('data arrived,',data.length);
                 $scope.results.books = data;
             });
