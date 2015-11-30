@@ -31,7 +31,6 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
     //a filter object is optional
     function get(_filters){
         var filters = _filters || {};
-        console.log('getting with filters:',filters);
         var deferred = $q.defer();
         var filteredBooks;
         $timeout(function(){

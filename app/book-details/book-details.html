@@ -24,6 +24,6 @@
     <div class="recommendations">
         <h1 class="centered">Similar reading</h1>
         <h2 class="centered">If you liked this book, we recommend you check out these emerging titles.</h2>
-        <book-display limit="3"></book-display>
+        <book-display filters="{ category: { searchValue: book.genre.category}, genre: {searchValue: book.genre.name}}" limit="3"></book-display>
     </div>
 </div>
