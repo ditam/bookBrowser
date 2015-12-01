@@ -2,7 +2,7 @@
     <div ng-if="results.books.length === 0">
         <div class="error-message">No books found. Try widening your search!</div>
     </div>
-    <div ng-repeat="book in results.books | limitTo: limit" class="col-sm-4">
+    <div ng-repeat="book in results.books | limitTo: limit:currentOffset" class="col-sm-4">
         <a href="#/details/{{book.id}}" title="See the details of this book!">
         <div class="book">
             <img ng-src="{{book.cover}}">
@@ -14,5 +14,13 @@
             </div>
         </div>
         </a>
+    </div>
+    <div ng-if="paging === true && results.books.length > limit" class="col-sm-12 paging-control-row">
+        <button ng-click="nextPage()" class="btn btn-default btn-sm pull-right" ng-disabled="currentOffset+limit > results.books.length">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+        </button>
+        <button ng-click="previousPage()" class="btn btn-default btn-sm pull-right" ng-disabled="currentOffset-limit < 0">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+        </button>
     </div>
 </div>
