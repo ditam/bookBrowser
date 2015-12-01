@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name bookBrowserApp
- * @description
- * # bookBrowserApp
- *
- * Main module of the application.
- */
 angular
   .module('bookBrowserApp', [
     'ngResource',

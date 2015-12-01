@@ -1,12 +1,12 @@
 'use strict';
 
+/**
+* In this sample application, the books are a local static resource.
+* An async interface is provided with an artificial delay as an API stub,
+* making the future transition to a real API easier.
+**/
 angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
 
-    /**
-    * In this sample application, the books are a local static resource.
-    * An async interface is provided with an artificial delay as an API stub,
-    * making the future transition to a real API easier.
-    **/
     var ASYNC_DELAY = 15; //ms  
     var books = [];
     
@@ -30,7 +30,6 @@ angular.module('bookBrowserApp').factory('books', function($http, $q, $timeout){
         return a.toLowerCase().indexOf( b.toLowerCase() ) > -1;
     }
     
-    //a filter object is optional
     function get(_filters){
         var filters = _filters || {};
         var deferred = $q.defer();

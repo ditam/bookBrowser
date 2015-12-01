@@ -1,20 +1,16 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name bookBrowserApp.controller:BookIndexCtrl
- * @description
- * # BookIndexCtrl
- * Controller of the bookBrowserApp
- */
 angular.module('bookBrowserApp')
   .controller('BookIndexCtrl', function ($scope, books, $routeParams) {
     $scope.userSelection = {};
     
-    //collections of selectable categories and genres. 
-    //name property holds the displayed name, searchValue holds the value used
-    // in filtering results
-    //both are extended with an 'any' type selection with no searchValue
+    /**
+    * collections of selectable categories and genres. 
+    * name property holds the displayed name, searchValue holds the value used
+    *  in filtering results.
+    * this format is used to support a "no value" selection - both collections
+    *  are extended with an 'any' type selection with no searchValue.
+    **/
     $scope.categories = [];
     $scope.genres = [];
     

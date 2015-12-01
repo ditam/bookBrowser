@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+* This <book-display> directive can be used to display a showcase of books.
+* You can bind to the following attributes as input params:
+* - limit: number of books to be displayed on one page
+* - [optional] filters: an object to filter the books by
+*   (can contain id, category, genre and search query string)
+* - [optional] paging: if true, result sets bigger than limit receive paging controls
+* It uses the books service to fetch book data based on the provided filters.
+**/
 angular.module('bookBrowserApp').directive('bookDisplay', function(books){
   return {
     templateUrl: 'book-index/book-display-template.html',
